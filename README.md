@@ -22,5 +22,4 @@ flowchart TD
     wave_done -->|yes| no_more_waves(next wave)
     no_more_waves --> start_wave
     start_wave --> spawn_w
-    next_lev --> start
 ````
