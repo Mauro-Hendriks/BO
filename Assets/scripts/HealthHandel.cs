@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+using UnityEngine.SceneManagement;
 
 public class HealthHandel : MonoBehaviour
 {
     
     public TMP_Text wave;
     public int health;
-    private enemyInfo incdamage = null;
+    private enemyInfo incdamage;
     public int currentdamage = 0;
     private string Healthdis;
     // Start is called before the first frame update
@@ -22,25 +22,29 @@ public class HealthHandel : MonoBehaviour
         Healthdis = "Health: " + health;
 
         wave.text = Healthdis;
-
-        incdamage.damage = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-      
-        currentdamage = incdamage.damage;
-        Debug.Log(currentdamage);
-        health = health - currentdamage;
-        Debug.Log(health);
-        Healthdis = "Health: " + health;
-      
+        damage();
         wave.text = Healthdis;
 
-        if (health >= 0)
+        if (health <= 0)
         {
+            SceneManager.LoadScene(2);
             Debug.Log("lost");
+        }
+    }
+
+    void damage()
+    {
+        if (incdamage)
+        {
+            currentdamage = incdamage.damage;
+            incdamage.damage = 0;
+            health = health - currentdamage;
+            Healthdis = "Health: " + health;
         }
     }
     private void OnTriggerEnter(Collider other)

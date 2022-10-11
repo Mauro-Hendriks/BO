@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 531509104467218379}
   - component: {fileID: 2255382203547668875}
   - component: {fileID: 7717275131465049591}
-  m_Layer: 6
+  m_Layer: 14
   m_Name: enemy slow
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -126,6 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 25
   damage: 10
+  gold_drop: 0
 --- !u!135 &2255382203547668875
 SphereCollider:
   m_ObjectHideFlags: 0

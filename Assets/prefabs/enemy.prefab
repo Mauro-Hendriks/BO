@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -5099106605382305214}
   - component: {fileID: -2125280932288080073}
   - component: {fileID: 6897641048971142307}
-  m_Layer: 6
+  m_Layer: 13
   m_Name: enemy
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -126,6 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 10
   damage: 5
+  gold_drop: 0
 --- !u!135 &-2125280932288080073
 SphereCollider:
   m_ObjectHideFlags: 0
