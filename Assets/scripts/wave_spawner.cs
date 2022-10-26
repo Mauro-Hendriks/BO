@@ -8,17 +8,14 @@ public class wave_spawner : MonoBehaviour
     public int currentWave;
     public int waveValue;
     public List<GameObject> EnemiesToSpawn = new List<GameObject>();
-
     public Transform[] SpawnLoca;
     public int SpawnIndex;
-
     public float waveDur;
     private float WaveTime;
     private float SpawnInter;
-
     private float SpawnTime;
-
     public List<GameObject> SpawnedEnemies = new List<GameObject>();
+    public bool next = false;
 
     void Start()
     {
@@ -28,40 +25,49 @@ public class wave_spawner : MonoBehaviour
     
     void FixedUpdate()
     {
-        if (SpawnTime <= 0)
+        if (next == true)
         {
-            if (EnemiesToSpawn.Count >0)
+            if (SpawnTime <= 0)
             {
-                GameObject enemy = (GameObject)Instantiate(EnemiesToSpawn[0],SpawnLoca[SpawnIndex].position,Quaternion.identity);
-                EnemiesToSpawn.RemoveAt(0);
-                SpawnedEnemies.Add(enemy);
-                SpawnTime = SpawnInter;
-
-                if (SpawnIndex + 1 <= SpawnLoca.Length-1)
+                if (EnemiesToSpawn.Count > 0)
                 {
-                    SpawnIndex++;
+                    GameObject enemy = (GameObject)Instantiate(EnemiesToSpawn[0], SpawnLoca[SpawnIndex].position, Quaternion.identity);
+                    EnemiesToSpawn.RemoveAt(0);
+                    SpawnedEnemies.Add(enemy);
+                    SpawnTime = SpawnInter;
+
+                    if (SpawnIndex + 1 <= SpawnLoca.Length - 1)
+                    {
+                        SpawnIndex++;
+                    }
+                    else
+                    {
+                        SpawnIndex = 0;
+                    }
                 }
                 else
                 {
-                    SpawnIndex = 0;
+                    WaveTime = 0;
+
                 }
+
             }
             else
             {
-                WaveTime = 0;
+                SpawnTime -= Time.fixedDeltaTime;
+                WaveTime -= Time.fixedDeltaTime;
             }
+            if (WaveTime <= 0 && SpawnedEnemies.Count <= 0)
+            {
+                currentWave++;
+                GenWave();
+            }
+        }
+    }
 
-        }
-        else
-        {
-            SpawnTime -= Time.fixedDeltaTime;
-            WaveTime -= Time.fixedDeltaTime;
-        }
-        if (WaveTime<=0 && SpawnedEnemies.Count <=0)
-        {
-            currentWave++;
-            GenWave();
-        }
+    public void Change()
+    {
+        next = true;
     }
 
     public void GenWave()

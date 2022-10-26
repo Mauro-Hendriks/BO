@@ -6,13 +6,12 @@ public class summontower : MonoBehaviour
 {
     public List<GameObject> TowerToSpawn = new List<GameObject>();
     mausepos Mausepos;
-    public GameObject towers;
-
     Vector3 mause;
-    // Start is called before the first frame update
+    private goldHandeler GoldH;
     void Start()
     {
-        Mausepos = FindObjectOfType<mausepos>();      
+        Mausepos = FindObjectOfType<mausepos>();
+        GoldH = FindObjectOfType<goldHandeler>();
     }
 
     // Update is called once per frame
@@ -24,5 +23,6 @@ public class summontower : MonoBehaviour
     public void spawn1()
     {
         GameObject towers = (GameObject)Instantiate(TowerToSpawn[0], mause, Quaternion.identity);
+        GoldH.Gold = GoldH.Gold - 5;
     }
 }

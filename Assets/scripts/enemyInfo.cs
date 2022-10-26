@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class enemyInfo : MonoBehaviour
 {
@@ -8,11 +10,11 @@ public class enemyInfo : MonoBehaviour
     public int damage;
     public goldHandeler Gold;
     public int GGold;
+    public Slider health;
     // Start is called before the first frame update
     void Start()
     {
-        GGold = Gold.Gold;
-        
+        health.maxValue = HP;
     }
 
     // Update is called once per frame
@@ -39,5 +41,15 @@ public class enemyInfo : MonoBehaviour
         }
     }
 
-    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "bullet")
+        {
+            Destroy(other.gameObject);
+            HP = HP - 2;
+            health.value = HP;
+        }
+    }
+
+
 }

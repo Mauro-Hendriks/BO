@@ -6,7 +6,7 @@ public class mausepos : MonoBehaviour
     TerrainCollider terrainCollider;
     public Vector3 worldPosition;
     Ray ray;
-    summontower tower;
+
     void Start()
     {
         terrainCollider = Terrain.activeTerrain.GetComponent<TerrainCollider>();
@@ -18,8 +18,8 @@ public class mausepos : MonoBehaviour
         if (terrainCollider.Raycast(ray, out hitData,10000000))
         {
             worldPosition = hitData.point;
-            tower.towers.transform.position = worldPosition;
+            
         }
-        Debug.Log(worldPosition);
+        
     }
 }
