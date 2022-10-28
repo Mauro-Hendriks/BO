@@ -21,8 +21,8 @@ public class BulletMove : MonoBehaviour
     void Update()
     {
         Vector3 velocity = new Vector3(targetX,targety,targetz);
-        transform.position += velocity * speed * Time.deltaTime;
-        
+        transform.position = velocity;
+        Debug.Log(velocity);
         if (timeRemaining > 0)
         {
             timeRemaining -= Time.deltaTime;

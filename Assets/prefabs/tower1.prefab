@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8859944164307015197}
+  - component: {fileID: 8865397826100066709}
   m_Layer: 0
   m_Name: gunpoint
   m_TagString: Untagged
@@ -31,6 +32,18 @@ Transform:
   m_Father: {fileID: 8205687344929732497}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8865397826100066709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3159036141231307302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7520342e98df4e4db9ac700ce4726bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4430494717201305577
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,8 +138,6 @@ GameObject:
   - component: {fileID: 8205687344929732497}
   - component: {fileID: 8205687344929732498}
   - component: {fileID: 8205687344929732499}
-  - component: {fileID: 7283126079334554960}
-  - component: {fileID: 3019547980831036888}
   - component: {fileID: 7772046682591002725}
   m_Layer: 0
   m_Name: tower1
@@ -202,32 +213,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7283126079334554960
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8205687344929732493}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &3019547980831036888
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8205687344929732493}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.3
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7772046682591002725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,5 +230,5 @@ MonoBehaviour:
   perm: 0
   bullet: {fileID: 946117947698311385, guid: 3202de1ab388ec6428946a671c6dd639, type: 3}
   firepiont: {fileID: 8859944164307015197}
-  fireCountDown: 0
-  fireRate: 1
+  target: {x: 0, y: 0, z: 0}
+  radius: 10

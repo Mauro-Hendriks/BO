@@ -22,7 +22,11 @@ public class summontower : MonoBehaviour
 
     public void spawn1()
     {
-        GameObject towers = (GameObject)Instantiate(TowerToSpawn[0], mause, Quaternion.identity);
-        GoldH.Gold = GoldH.Gold - 5;
+        if (GoldH.Gold - 5 >= 0)
+        {
+            GameObject towers = (GameObject)Instantiate(TowerToSpawn[0], mause, Quaternion.identity);
+            GoldH.Gold = GoldH.Gold - 5;
+        }
+
     }
 }

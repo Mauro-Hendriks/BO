@@ -8,13 +8,13 @@ public class enemyInfo : MonoBehaviour
 {
     public int HP;
     public int damage;
-    public goldHandeler Gold;
-    public int GGold;
     public Slider health;
+    public GameObject test;
     // Start is called before the first frame update
     void Start()
     {
         health.maxValue = HP;
+        test = GameObject.Find("Gold");
     }
 
     // Update is called once per frame
@@ -22,8 +22,9 @@ public class enemyInfo : MonoBehaviour
     {
         if(HP <= 0)
         {
-            GGold = GGold + 1;
             Destroy(this.gameObject);
+            goldHandeler GoldH = test.GetComponent<goldHandeler>();
+            GoldH.Gold = GoldH.Gold + 2;
         }
         
     }
@@ -33,11 +34,6 @@ public class enemyInfo : MonoBehaviour
         if (GameObject.FindGameObjectWithTag("WaveSpawner") != null)
         {
             GameObject.FindGameObjectWithTag("WaveSpawner").GetComponent<wave_spawner>().SpawnedEnemies.Remove(gameObject);
-        }
-
-        if (GameObject.FindGameObjectWithTag("Tower") != null)
-        {
-            GameObject.FindGameObjectWithTag("Tower").GetComponent<towersinfo>().enemy.Remove(gameObject);
         }
     }
 

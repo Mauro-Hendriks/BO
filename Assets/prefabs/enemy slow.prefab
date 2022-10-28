@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8395371053875401749}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 112578762962145301}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 5744135750191262756}
   - component: {fileID: 3862901640756661410}
   - component: {fileID: 1655603559024285917}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 1367716493510038289}
   - component: {fileID: 8812774598579816841}
   - component: {fileID: 7136378509488899674}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 4444000404409381194}
   - component: {fileID: 5981606103041615409}
   - component: {fileID: 5872641078559243702}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -414,7 +414,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8733759106275477445}
   - component: {fileID: 4697675320079808251}
-  m_Layer: 5
+  m_Layer: 13
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -510,7 +510,7 @@ GameObject:
   - component: {fileID: 531509104467218379}
   - component: {fileID: 2255382203547668875}
   - component: {fileID: 7717275131465049591}
-  m_Layer: 14
+  m_Layer: 13
   m_Name: enemy slow
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -622,9 +622,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 25
   damage: 10
-  Gold: {fileID: 0}
-  GGold: 0
   health: {fileID: 4697675320079808251}
+  test: {fileID: 0}
 --- !u!135 &2255382203547668875
 SphereCollider:
   m_ObjectHideFlags: 0

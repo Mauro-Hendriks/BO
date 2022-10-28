@@ -18,8 +18,6 @@ public class mausepos : MonoBehaviour
         if (terrainCollider.Raycast(ray, out hitData,10000000))
         {
             worldPosition = hitData.point;
-            
         }
-        
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class towersinfo : MonoBehaviour
 {
-    public List<GameObject> enemy = new List<GameObject>();
+    Collider[] enemys; 
     public GameObject area;
     private bool iselect = true;
     mausepos Mausepos;
@@ -13,27 +13,32 @@ public class towersinfo : MonoBehaviour
     private bool ob = false;
     public GameObject bullet;
     public Transform firepiont;
-    public float fireCountDown = 0f;
-    public float fireRate = 0.5f;
+    private float fireCountDown = 0f;
+    private float fireRate = 2;
     public Vector3 target;
+    private Vector3 center;
+    public float radius = 20;
+    public LayerMask layer;
 
-
-
+   
     void Start()
     {
         area = transform.Find("area").gameObject;
         Mausepos = FindObjectOfType<mausepos>();
+        
     }
 
     void Update()
     {
+        center = this.transform.position;
+        layer = LayerMask.GetMask("enemy1");
         visi();
         if (Input.GetKey(KeyCode.Mouse1))
         {
-            Debug.Log("mouse");
             perm = true;
         }
         move();
+        Enemy_in_range(center,radius, layer);
     }
 
 
@@ -58,16 +63,6 @@ public class towersinfo : MonoBehaviour
             mause = Mausepos.worldPosition;
         }
         transform.position = mause;
-    }
-
-    private void shoot()
-    {
-        GameObject bul = (GameObject)Instantiate(bullet, firepiont.position, Quaternion.identity);
-        BulletMove bullets = bul.GetComponent<BulletMove>();
-        target = enemy[0].transform.position;
-        bullets.targetX = target.x;
-        bullets.targety = target.y;
-        bullets.targetz = target.z;
     }
 
     private void visi()
@@ -95,20 +90,21 @@ public class towersinfo : MonoBehaviour
         ob = false;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "enemy")
-        {
-            enemy.Add(other.gameObject);
-        }
-    }
 
-    private void OnTriggerStay(Collider other)
+    void Enemy_in_range(Vector3 center, float radius, int layerMask)
     {
-        if (other.tag == "enemy")
+        Debug.Log("trytoshoot");
+
+        enemys = Physics.OverlapSphere(center, radius,layerMask);
+        
+
+
+        if (enemys[0].tag == "enemy")
         {
+            Debug.Log("found enemy");
             if (fireCountDown <= 0f)
             {
+                
                 shoot();
                 Debug.Log("shoot");
                 fireCountDown = 1f / fireRate;
@@ -116,14 +112,19 @@ public class towersinfo : MonoBehaviour
         }
         fireCountDown -= Time.deltaTime;
     }
-
-    private void OnTriggerExit(Collider other)
+    private void shoot()
     {
-        if (other.tag == "enemy")
-        {
-            enemy.Remove(other.gameObject);
-        }
+        Debug.Log(enemys[0].transform.position);
+        GameObject bul = (GameObject)Instantiate(bullet, firepiont.position, bullet.transform.rotation);
+        BulletMove bullets = bul.GetComponent<BulletMove>();
+        target = enemys[0].transform.position;
+        bullets.targetX = target.x;
+        bullets.targety = target.y;
+        bullets.targetz = target.z;
     }
+
+
+
     /*private bool shoot = false;
     private float dy;
     private float dx;
