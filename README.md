@@ -4,7 +4,7 @@
 
 ````mermaid
 flowchart TD
-    start((Start)) -->|switch scene| spawn_w(make random enemy list)
+    start((Start)) --> spawn_w(make random enemy list)
     spawn_w --> checken(spawn wave)
     checken --> spawn_e(spawn enemies every 0.5 sec)
     spawn_e --> reached_base{enemy reached end?}
